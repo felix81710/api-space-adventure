@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>阿屁號｜3D 船體模型</title>
+  <script type="importmap">{"imports":{"three":"./vendor/three.module.js"}}</script>
+  <style>
+    *{box-sizing:border-box}
+    body{margin:0;overflow:hidden;background:#0b1017;color:#e9f4f8;font-family:system-ui,'Microsoft JhengHei',sans-serif}
+    #scene{display:block;width:100vw;height:100dvh;touch-action:none;cursor:grab}
+    #scene:active{cursor:grabbing}
+    button{min-width:48px;min-height:48px;border:1px solid #426274;border-radius:9px;padding:9px 13px;background:#13232fda;color:#e7f4f8;font:600 13px inherit;cursor:pointer;backdrop-filter:blur(12px);touch-action:manipulation}
+    button:hover{border-color:#9addec;background:#244252}
+    button:focus-visible,#scene:focus-visible{outline:2px solid #9ceeff;outline-offset:2px}
+    button[aria-pressed=true]{border-color:#8bd5e5;background:#285263}
+    header{position:absolute;z-index:2;top:17px;left:18px;pointer-events:none;text-shadow:0 2px 9px #000}
+    h1{margin:0 0 6px;font-size:20px;font-weight:550;letter-spacing:.04em}
+    #hud{display:flex;align-items:center;gap:9px;max-width:min(340px,62vw);min-height:30px;color:#c9e2ea;font-size:12px;line-height:1.3}
+    #hud-icon{display:grid;place-items:center;width:25px;height:25px;flex:none;border:1px solid #6bbecf;border-radius:50%;background:#1a4652;color:#b4f3ff;font-size:17px}
+    #hud.alert #hud-icon{border-color:#ff9c7f;background:#703028;color:#fff;box-shadow:0 0 13px #f7634799}
+    #hud.repaired #hud-icon{border-color:#83d9b4;background:#205846;color:#d3ffe8}
+    #hud-text{display:flex;gap:5px;flex-wrap:wrap}
+    #hud-title{font-weight:700}
+    #hud-step{color:#a9c9d3}
+    .demo-controls,.toolbar{position:absolute;z-index:4;bottom:max(15px,env(safe-area-inset-bottom));display:flex;gap:7px}
+    .demo-controls{left:17px}
+    .toolbar{right:18px}
+    .demo-controls button,.toolbar button{font-size:12px;white-space:nowrap}
+    body.embedded .demo-controls{display:none}
+    #status{position:absolute;left:-10000px}
+    .load{position:absolute;inset:0;z-index:8;display:grid;place-items:center;background:#0b1017;font-size:14px}
+    .load[hidden]{display:none}
+    @media(max-width:700px){
+      header{left:13px;top:12px}h1{font-size:17px}#hud{max-width:55vw;font-size:11px}
+      .demo-controls{left:10px;bottom:66px}.toolbar{left:10px;right:auto;bottom:12px}
+      .demo-controls button,.toolbar button{min-height:48px;padding:6px 9px;font-size:11px}
+    }
+    @media(max-width:390px){.demo-controls{gap:4px}.demo-controls button{padding:5px 7px}}
+  </style>
+</head>
+<body>
+  <canvas id="scene" tabindex="0" aria-label="阿屁號 3D 模型，拖曳旋轉、雙指縮放，點船體檢查零件，點駕駛艙進入面板"></canvas>
+  <header><h1>阿屁號 · 深空遠航型</h1><div id="hud" role="status" aria-live="polite"><span id="hud-icon" aria-hidden="true">⌖</span><span id="hud-text"><b id="hud-title">點選船體</b><span id="hud-step">查看五大系統 · 點駕駛艙進入面板</span></span></div></header>
+  <div class="demo-controls"><button id="demo-failure" type="button" title="模擬量子引擎故障">⚠ 引擎故障</button><button id="demo-mission" type="button" title="模擬任務後隨機戰損">◈ 任務戰損</button></div>
+  <div class="toolbar"><button id="home" type="button">◎ 全貌</button><button id="spin" type="button" aria-pressed="false">↻ 旋轉</button><button id="light" type="button" aria-pressed="false">☼ 柔光</button></div>
+  <span id="status"></span><div class="load" id="load">正在載入 3D 船體…</div>
+  <script type="module" src="viewer.js?v=20261018k"></script>
+</body>
+</html>

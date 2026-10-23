@@ -1,0 +1,59 @@
+/* Whole planet names stay visible while each letter is paired in the opposite case. */
+#letter-game { width: min(800px, 94vw); padding: 20px 28px; }
+#letter-game .letter-top { position: absolute; top: 12px; right: 14px; z-index: 1; }
+#letter-game #letter-close { width: 44px; min-height: 44px; padding: 4px; font-size: 27px; line-height: 1; }
+#letter-game h2 { font-size: 24px; margin: 8px 0 4px; padding: 0 36px; }
+#letter-game #letter-instruction { margin: 5px 0 14px; font-size: 16px; }
+#letter-game #letter-scene { margin: 0; }
+#letter-game .planet-word { padding: 12px 22px; background: linear-gradient(145deg, #183a4d, #0c2132); border: 1px solid #749eb266; border-radius: 18px; }
+#letter-game .planet-word small { display: flex; justify-content: center; align-items: center; gap: 15px; margin: 0 0 10px; font-size: 18px; color: #d2e8ef; }
+#letter-game .letter-planet { display: inline-block; position: relative; width: 32px; height: 32px; border-radius: 50%; background: radial-gradient(circle at 30% 25%, #dddcc9, #8e938c 45%, #394851 80%); box-shadow: 0 0 18px #b5dded25, inset -6px -5px 10px #0008; }
+#letter-game [data-planet="venus"] .letter-planet { background: repeating-linear-gradient(20deg, #c7a15d, #e1bf77 6px, #ad853f 12px); }
+#letter-game [data-planet="earth"] .letter-planet { background: radial-gradient(ellipse at 50% 35%, #97c3a4 0 15%, transparent 18%), radial-gradient(ellipse at 30% 60%, #73966e 0 20%, transparent 23%), radial-gradient(circle at 30% 20%, #76c3ef, #265c9a 60%, #0c2e57); }
+#letter-game [data-planet="mars"] .letter-planet { background: radial-gradient(circle at 30% 25%, #ebbd8c, #b86545 45%, #582c29 85%); }
+#letter-game [data-planet="jupiter"] .letter-planet, #letter-game [data-planet="saturn"] .letter-planet { background: repeating-linear-gradient(10deg, #d7c097, #d7c097 5px, #a98a64 7px, #d5c7ae 12px); }
+#letter-game [data-planet="saturn"] .letter-planet::after { content: ''; position: absolute; width: 55px; height: 15px; border: 4px solid #bda677; border-radius: 50%; top: 6px; left: -13px; transform: rotate(-22deg); }
+#letter-game [data-planet="uranus"] .letter-planet { background: radial-gradient(circle at 30% 25%, #cff1ed, #87bfce 50%, #426b8e); }
+#letter-game [data-planet="neptune"] .letter-planet { background: radial-gradient(circle at 30% 25%, #6baff4, #3659bc 50%, #1a285a); }
+#letter-game .word-letters, #letter-game .word-answers { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); gap: 7px; max-width: 580px; margin: auto; }
+#letter-game .planet-word .word-letters span, #letter-game .planet-word .word-answers span { min-width: 0; padding: 6px 0; border-radius: 8px; font: 600 clamp(30px, 5.2vw, 50px)/1 Arial, sans-serif; color: #d9eaf0; border: 2px solid transparent; }
+#letter-game .word-letters span.current { color: #ffe2a0; background: #b2873c35; border-color: #e2bc72; box-shadow: 0 0 18px #e2bc7220; }
+#letter-game .word-letters span.matched { color: #9ed7c3; }
+#letter-game .planet-word .word-answers span { color: #637f90; background: #061826; border-color: #3f607360; }
+#letter-game .word-answers span.current { border-color: #d1b675; border-style: dashed; color: #dfcfa8; }
+#letter-game .word-answers span.filled { background: #214c46; border-color: #8ebfa9; color: #c6f3dc; }
+#letter-game .planet-word .word-arrow { display: block; margin: 4px 0; color: #93bac8; font: 600 18px/1.2 Arial, sans-serif; }
+#letter-game .letter-tools { display: flex; justify-content: center; gap: 10px; margin: 12px 0 0; min-height: 48px; }
+#letter-game #letter-speak, #letter-game #letter-hint { min-width: 55px; min-height: 48px; padding: 7px 12px; font-size: 25px !important; }
+#letter-game #letter-options { gap: 16px !important; margin: 14px 0 !important; padding: 0 !important; }
+#letter-game button.letter-choice { width: 140px !important; max-width: 26vw; height: 100px !important; min-height: 70px !important; font-size: 64px !important; }
+#letter-game button.letter-choice:active { transform: translateY(3px); }
+#letter-game #letter-feedback { min-height: 26px; margin: 8px 0 12px; font-size: 16px; }
+#letter-game .letter-progress { margin: 0; font-size: 15px; }
+#letter-game .success .word-answers { filter: drop-shadow(0 0 8px #9ed7c355); }
+@media (max-width: 520px) {
+  #letter-game { padding: 16px 14px; }
+  #letter-game h2 { font-size: 21px; }
+  #letter-game #letter-instruction { font-size: 14px; margin-bottom: 12px; }
+  #letter-game .planet-word { padding: 16px 8px; }
+  #letter-game .word-letters, #letter-game .word-answers { gap: 3px; }
+  #letter-game .planet-word .word-letters span, #letter-game .planet-word .word-answers span { padding: 9px 0; font-size: clamp(25px, 7vw, 34px); border-radius: 5px; }
+  #letter-game button.letter-choice { font-size: 54px !important; height: 92px !important; }
+  #letter-game #letter-options { gap: 10px !important; }
+}
+@media (max-height: 600px) and (min-width: 521px) {
+  #letter-game { padding: 12px 22px; }
+  #letter-game .letter-top { min-height: 42px; }
+  #letter-game h2 { font-size: 19px; margin: 0; }
+  #letter-game #letter-instruction { font-size: 14px; margin: 3px 0 8px; }
+  #letter-game .planet-word { padding: 8px 18px; }
+  #letter-game .planet-word small { margin: 0 0 6px; font-size: 15px; }
+  #letter-game .letter-planet { width: 26px; height: 26px; }
+  #letter-game .planet-word .word-letters span, #letter-game .planet-word .word-answers span { padding: 5px 0; font-size: 34px; }
+  #letter-game .planet-word .word-arrow { margin: 4px 0; font-size: 15px; }
+  #letter-game .letter-tools { margin-top: 6px; min-height: 42px; }
+  #letter-game #letter-speak, #letter-game #letter-hint { min-height: 42px; }
+  #letter-game #letter-options { margin: 8px 0 !important; }
+  #letter-game button.letter-choice { height: 68px !important; min-height: 64px !important; font-size: 48px !important; }
+  #letter-game #letter-feedback { margin: 4px 0 6px; min-height: 22px; font-size: 14px; }
+}

@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+  <meta name="theme-color" content="#080d12">
+  <title>阿屁號 · 沉浸式駕駛艙</title>
+  <script type="importmap">{"imports":{"three":"../ship-study/vendor/three.module.js"}}</script>
+  <link rel="stylesheet" href="cockpit.css?v=20261023n">
+  <link rel="stylesheet" href="meteor-game.css?v=20261023l">
+  <link rel="stylesheet" href="salvage-game.css?v=20261023l">
+</head>
+<body>
+  <canvas id="cockpit" tabindex="0" role="img" aria-label="阿屁號立體駕駛艙。拖曳環顧，點選控制台操作。"></canvas>
+  <header class="flight-header">
+    <div class="identity"><span class="insignia" aria-hidden="true">⟐</span><div><strong>阿屁號</strong><small>EXPLORER 01 / FLIGHT DECK</small></div></div>
+    <div class="header-actions"><button id="reset-view" aria-label="回到正前方視角" title="回到正前方">正前方</button><button id="dashboard" aria-label="返回原控制面板" title="控制面板">控制面板</button></div>
+  </header>
+  <section class="console-dock" aria-label="飛航控制台">
+    <div class="console-card navigation-card">
+      <button id="destination-card" class="destination-card" aria-label="目的地與星圖"><canvas id="destination-art" width="144" height="144" aria-hidden="true"></canvas><span><small id="destination-caption">目前位置</small><strong id="destination-name">地球</strong><em id="navigation-current" hidden></em></span><span id="arrival-check" hidden data-ui-icon="check" aria-hidden="true"></span></button>
+      <div id="mission-detail" class="mission-detail" hidden><span id="mission-task-icon" aria-hidden="true"></span><span><span id="mission-task"></span><small id="mission-progress" hidden></small></span></div>
+      <button id="mission-play" class="mission-play" hidden><span id="mission-play-icon" aria-hidden="true"></span><span id="mission-play-label">開始任務</span></button>
+      <button id="fuel-gauge" class="gauge" aria-label="補充燃料"><span class="gauge-icon" data-ui-icon="fuel"></span><span class="gauge-track"><span id="fuel-fill"></span></span><b id="fuel-value">100</b></button>
+      <button id="station-supply" class="station-supply" hidden>基地補給</button>
+    </div>
+    <nav class="primary-actions" aria-label="主要操作"><button data-flight-action="mission" aria-label="接收或更換任務"></button><button data-flight-action="map" aria-label="開啟太陽系星圖"></button><button data-flight-action="scan" aria-label="啟動雷達掃描"></button><button data-flight-action="jump" aria-label="啟動躍遷"></button><button id="mission-complete" data-flight-action="complete" aria-label="完成任務並領取獎勵" hidden></button></nav>
+    <div class="console-card engineering-card"><button id="ship-status" class="ship-status" aria-label="查看船體與受損零件"><span class="ship-silhouette" data-ui-icon="ship"></span><span id="system-health" class="system-health"></span></button><button id="shield-gauge" class="gauge" aria-label="防護力場充能"><span class="gauge-icon" data-ui-icon="shield"></span><span class="gauge-track"><span id="shield-fill"></span></span><b id="shield-value">100</b></button></div>
+  </section>
+  <div id="hint" role="status" aria-live="polite"><span class="hint-key" data-ui-icon="drag"></span><span id="hint-text">拖曳環顧 · 點圖案操作</span></div>
+  <div id="toast" role="status" aria-live="polite" hidden></div>
+  <div class="lower-hud"><div id="resource-readout" aria-label="持有資源"><span class="resource-chip" title="螺絲"><i data-ui-icon="screw"></i><b id="resource-scrap">0</b></span><span class="resource-chip" title="鑽石"><i data-ui-icon="crystal"></i><b id="resource-crystal">0</b></span></div><button id="sound" aria-label="切換遊戲音效" title="遊戲音效">聲音</button></div>
+  <nav id="accessible-controls" aria-label="駕駛艙快捷操作" hidden>
+    <button data-action="mission" aria-label="接收或更換探索任務">任務</button><button data-action="map" aria-label="開啟太陽系星圖">星圖</button><button data-action="scan" aria-label="啟動雷達掃描">雷達</button><button data-action="jump" id="quick-jump" aria-label="啟動躍遷">出發</button><button data-action="ship" aria-label="開啟船體檢修">檢修</button><button data-action="engine" aria-label="開啟量子引擎">引擎</button><button data-action="weapons" aria-label="開啟武器系統">武器</button><button data-action="fuel" aria-label="開啟燃料補給">補給</button><button data-action="economy" aria-pressed="false" aria-label="切換節能航行">節能</button><button data-action="radiator" aria-pressed="false" aria-label="切換散熱翼">散熱</button>
+  </nav>
+  <div id="loading"><span class="loading-orbit"></span><strong>正在進入駕駛艙</strong><small>EXPLORER 01</small></div>
+  <script type="module" src="scene.js?v=20261023n"></script>
+</body>
+</html>

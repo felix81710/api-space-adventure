@@ -1,0 +1,12 @@
+/* Comfortable touch controls across the older dashboard and current star map. */
+.mission-tools{display:flex;gap:10px;justify-content:flex-end;margin:6px 0}
+.mission-tools button{min-width:48px;min-height:48px;border:1px solid #719bb1;border-radius:10px;background:#183448;color:#d8f1ff;font:700 25px system-ui;touch-action:manipulation;cursor:pointer}
+.mission-tools button:active{transform:translateY(2px);background:#2b5269}
+.mission-tools button:focus-visible{outline:3px solid #b2efdb;outline-offset:3px}
+.solar3d-label{min-height:44px!important;min-width:48px;padding:9px 11px;font-size:12px;border-radius:10px}
+.solar3d-label:active{background:#31556b}
+.repair-steps button,.leak-steps button,#leak-patches button{min-width:48px;min-height:48px}
+#letter-game.needs-fuel .letter-progress{border:1px solid #e4c67b;border-radius:12px;padding:12px;background:#5b46233b}
+#letter-feedback{min-height:1.8em}
+@media(max-width:760px){.solar3d-label{min-height:44px!important;padding:8px;font-size:11px}}
+@media(prefers-reduced-motion:reduce){.mission-tools button{transition:none}}

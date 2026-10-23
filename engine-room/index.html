@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no"><meta name="theme-color" content="#050b13"><title>阿屁號 · 量子引擎艙</title><script type="importmap">{"imports":{"three":"../ship-study/vendor/three.module.js"}}</script><link rel="stylesheet" href="engine-room.css?v=20261023n"></head>
+<body>
+<canvas id="reactor" tabindex="0" role="img" aria-label="立體量子引擎艙。拖曳環顧與縮放，拖動實體拉桿、點選控制按鈕。"></canvas>
+<header><div class="room-name"><i data-icon="engine"></i><div><strong>量子引擎</strong><span id="room-status" role="status">標準 · 核心穩定</span><div class="telemetry" aria-label="引擎即時數據"><span><b id="temperature">3450</b><small>K</small></span><span><b id="stability">99.8</b><small>%</small></span><span id="output-reading"><i id="output-icon" aria-hidden="true"></i><b id="output-percent">100</b><small>%</small></span></div></div><b id="countdown" hidden></b></div><nav><button id="view-reset" aria-label="回到引擎正面" title="正面視角" data-icon="reset"></button><button id="back" aria-label="返回駕駛艙" title="駕駛艙" data-icon="dashboard"></button></nav></header>
+<div id="repair-steps" class="repair-steps" aria-label="引擎修復進度" hidden><span data-phase="1"><i data-icon="radiator"></i><small>調壓</small></span><b>›</b><span data-phase="2"><i data-icon="engine"></i><small>分流</small></span><b>›</b><span data-phase="3"><i data-icon="reset"></i><small>重啟</small></span><button id="emergency" aria-label="緊急中止故障測試">■</button></div>
+<nav id="model-controls" aria-label="量子引擎實體控制台">
+ <input type="range" id="coolant" min="0" max="100" value="50" aria-label="冷卻液實體拉桿" aria-orientation="vertical">
+ <input type="range" id="plasma" min="0" max="100" value="50" aria-label="電漿實體拉桿" aria-orientation="vertical">
+ <button data-sub="cool" aria-label="緊急電漿冷卻"></button><button data-sub="mag" aria-label="量子磁場重組"></button><button data-sub="shd" aria-label="裝甲護盾充能"></button>
+ <button data-reboot="r" aria-label="紅色三角重啟按鈕" disabled></button><button data-reboot="y" aria-label="黃色圓形重啟按鈕" disabled></button><button data-reboot="b" aria-label="藍色菱形重啟按鈕" disabled></button>
+ <button data-mode="economy" aria-label="節能輸出模式" aria-pressed="false"></button><button data-mode="standard" aria-label="標準輸出模式" aria-pressed="true"></button><button data-mode="boost" aria-label="高輸出模式" aria-pressed="false"></button><button id="drill" data-action="drill" aria-label="啟動引擎故障演練" title="故障演練"></button>
+</nav>
+<div id="room-toast" role="status" aria-live="polite" hidden></div><div id="loading"><span></span><strong>正在進入量子引擎艙</strong></div>
+<script src="output-modes.js?v=20261023j"></script>
+<script type="module" src="scene.js?v=20261023n"></script>
+</body></html>
+
